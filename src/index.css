@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --color-ink-950: #0a1310;
+  --color-ink-900: #0d1815;
+  --color-ink-850: #101c18;
+  --color-ink-800: #13201b;
+  --color-ink-700: #182620;
+  --color-ink-600: #24352c;
+  --color-ink-500: #37493f;
+
+  --color-ivory: #edeadf;
+  --color-ivory-dim: #a9b3a8;
+  --color-ivory-faint: #6f7d72;
+
+  --color-gold-400: #e0bc74;
+  --color-gold-500: #c89b4a;
+  --color-gold-600: #a67f38;
+
+  --color-sage-400: #7bc396;
+  --color-sage-500: #5fa779;
+  --color-sage-600: #488862;
+
+  --color-rose-500: #b85c4f;
+  --color-rose-400: #cc7a6e;
+
+  /* Compression semantics — these three states are the vocabulary of a
+     unilevel run and get their own colour so they read at a glance. */
+  --color-roll-400: #d99b5f;  /* rolled up past an unqualified upline */
+  --color-lost-400: #7a6f8f;  /* level existed but rank didn't unlock it */
+}
+
+html { color-scheme: dark; }
+
+body {
+  background-color: var(--color-ink-950);
+  color: var(--color-ivory);
+  font-family: var(--font-sans);
+}
+
+/* Money and volume columns align only with tabular figures. Non-negotiable in
+   anything that reconciles. */
+.tnum { font-variant-numeric: tabular-nums; font-feature-settings: "tnum"; }
+
+.ledger-rules {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--color-ink-600) 40%, transparent) 0px,
+    color-mix(in srgb, var(--color-ink-600) 40%, transparent) 1px,
+    transparent 1px, transparent 30px
+  );
+}
+
+::selection { background: var(--color-gold-500); color: var(--color-ink-950); }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--color-ink-900); }
+::-webkit-scrollbar-thumb { background: var(--color-ink-600); border-radius: 999px; }
+:focus-visible { outline: 2px solid var(--color-gold-400); outline-offset: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
